@@ -971,11 +971,23 @@ static CBigNum GetProofOfStakeLimit(int nHeight)
 // miner's coin base reward
 int64_t GetProofOfWorkReward(int64_t nFees, int nHeight)
 {
-    int64_t nSubsidy = 0 * COIN;
+    int64_t nSubsidy = 500000 * COIN;
 		 
-	if (nHeight <= 0)
-			nSubsidy = 40000000 * COIN;
-	 			
+	if (nHeight <= 25)
+			nSubsidy = 4000000 * COIN;
+	 
+	else if (nHeight < 200)  
+			nSubsidy = 0 * COIN;
+			
+	else if (nHeight < 43400)  //aprox 1 month, reward halves
+			nSubsidy = 100 * COIN;
+			
+	else if (nHeight < 86400)  //aprox 1 month, reward halves
+			nSubsidy = 50 * COIN;		
+	
+	else if (nHeight < 129600)  //aprox 1 month , reward halves
+			nSubsidy = 25 * COIN; 
+			
 	else
 		nSubsidy = 10 * COIN;  //until Block 260 000
 	
@@ -988,20 +1000,16 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
 {
     int64_t nSubsidy;
     if (IsProtocolV3(pindexPrev->nTime)){
-        if (nHeight < 0)
-			nSubsidy = COIN * 40000000;
+        if (nHeight < 50000)
+			nSubsidy = COIN * 40;
 		
 		
-		else if (nHeight < 200)
-			nSubsidy = COIN * 100 / 2;   //POS HALVING
+		else if (nHeight < 100000)
+			nSubsidy = COIN * 40 / 2;   //POS HALVING
 		
 		
-		else if (nHeight < 43400)
-			nSubsidy = COIN * 50 / 2;   //POS HALVING
-		
-		
-		else if (nHeight < 86400)
-			nSubsidy = COIN * 25 / 2;   //POS HALVING
+		else if (nHeight < 150000)
+			nSubsidy = COIN * 20 / 2;   //POS HALVING
 		
 		else
 			nSubsidy = COIN * 10 / 2;  //POS HALVING  
