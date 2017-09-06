@@ -71,19 +71,19 @@ public:
         genesis.nVersion = 1;
         genesis.nTime    = 1490904285;
         genesis.nBits    = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce   = 1702465;
+        genesis.nNonce   = 0;
  
  
  
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x00000d905bbbb5a24638a87d12f36033e50669f8e75cec2f737cb968c38e6ddc"));
-        assert(genesis.hashMerkleRoot == uint256("0xa54cbec479649b7bffa1859c3e46d131d2961a24a97589eedf20d88c6486e0d6"));
+        assert(hashGenesisBlock == uint256(""));
+        assert(genesis.hashMerkleRoot == uint256(""));
  
 	vSeeds.push_back(CDNSSeedData("tomtomnode.servep2p.com", "tomtomnode1.servep2p.com"));
  
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 71); //V
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 132); //v
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1, 153);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 65); //T
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 5); //t
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1, 111);
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
  
